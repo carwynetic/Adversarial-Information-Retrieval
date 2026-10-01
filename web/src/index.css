@@ -1,0 +1,232 @@
+/* Dir-BiSAGE Design System - Conforms to /fk standards */
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* OKLCH Color Palette */
+  --bg: oklch(0.985 0.005 260);
+  --surface: oklch(1 0 0);
+  --surface-subtle: oklch(0.965 0.008 260);
+  --surface-elevated: oklch(1 0 0);
+  --border: oklch(0.90 0.01 260);
+  --border-strong: oklch(0.82 0.02 260);
+  --border-focus: oklch(0.55 0.22 255);
+  
+  --ink: oklch(0.18 0.03 260);
+  --ink-muted: oklch(0.46 0.03 260);
+  --ink-subtle: oklch(0.62 0.02 260);
+  --ink-inverse: oklch(0.99 0.005 260);
+
+  /* Brand Colors */
+  --primary: oklch(0.48 0.22 255);
+  --primary-hover: oklch(0.42 0.23 255);
+  --primary-light: oklch(0.94 0.05 255);
+  --primary-ink: oklch(0.30 0.18 255);
+
+  --trust: oklch(0.58 0.19 145);
+  --trust-light: oklch(0.94 0.05 145);
+  --trust-ink: oklch(0.28 0.15 145);
+
+  --spam: oklch(0.55 0.24 25);
+  --spam-light: oklch(0.94 0.06 25);
+  --spam-ink: oklch(0.32 0.18 25);
+
+  --warning: oklch(0.70 0.16 75);
+  --warning-light: oklch(0.96 0.06 75);
+  --warning-ink: oklch(0.38 0.14 75);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4 {
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+p {
+  color: var(--ink-muted);
+  max-width: 68ch;
+}
+
+/* Z-Pattern Container */
+.z-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Z-Pattern Zig-Zag Grid */
+.z-zigzag-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 64px 0;
+}
+
+@media (max-width: 860px) {
+  .z-zigzag-row {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 40px 0;
+  }
+  .z-zigzag-row.reverse {
+    direction: ltr;
+  }
+}
+
+/* Utility Cards & Badges */
+.card-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 28px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-panel:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-strong);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge-trust {
+  background: var(--trust-light);
+  color: var(--trust-ink);
+  border: 1px solid oklch(0.85 0.08 145);
+}
+
+.badge-spam {
+  background: var(--spam-light);
+  color: var(--spam-ink);
+  border: 1px solid oklch(0.85 0.10 25);
+}
+
+.badge-primary {
+  background: var(--primary-light);
+  color: var(--primary-ink);
+  border: 1px solid oklch(0.85 0.08 255);
+}
+
+.badge-warning {
+  background: var(--warning-light);
+  color: var(--warning-ink);
+  border: 1px solid oklch(0.85 0.08 75);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--ink-inverse);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--border-strong);
+}
+
+.btn-outline:hover {
+  background: var(--surface-subtle);
+  border-color: var(--ink-muted);
+}
+
+/* Interactive Tabs */
+.tab-button {
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-muted);
+  transition: all 0.15s ease;
+}
+
+.tab-button.active {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Code & Metrics */
+.code-inline {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 2px 6px;
+  background: var(--surface-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--primary-ink);
+  border: 1px solid var(--border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
